@@ -5,6 +5,8 @@ const cells = 3;
 const width = 600;
 const height = 600;
 
+const unitLength = width / cells;
+
 const engine = Engine.create();
 const { world } = engine;
 
@@ -82,7 +84,8 @@ const stepThroughCell = (row, column) => {
     [row, column + 1, "left"],
   ]);
 
-  console.log(neighbors);
+  //   console.log(neighbors);
+
   //For each neighbor..
   for (let neighbor of neighbors) {
     const [nextRow, nextColumn, direction] = neighbor;
@@ -111,8 +114,18 @@ const stepThroughCell = (row, column) => {
     } else if (direction === "down") {
       horizontals[row][column] = true;
     }
+    stepThroughCell(nextRow, nextColumn);
   }
   //Visit the next cell
 };
 
 stepThroughCell(startRow, startColumn);
+
+horizontals.forEach((row, rowIndex) => {
+  row.forEach((open, columnIndex) => {
+    if (open) {
+      return;
+    }
+    const wall = Bodies.rectangle(columnIndex * unitLength + unitLength / 2);
+  });
+});
