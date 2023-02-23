@@ -1,7 +1,7 @@
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 
-const cellsHorizontal = 12;
-const cellsVertical = 10;
+const cellsHorizontal = 6;
+const cellsVertical = 5;
 const width = window.innerWidth;
 const height = window.innerHeight;
 
@@ -194,19 +194,23 @@ World.add(world, ball);
 document.addEventListener("keydown", (event) => {
   const { x, y } = ball.velocity;
 
-  if (event.keyCode === 87) {
+  if (event.keyCode === 38) {
+    //up
     Body.setVelocity(ball, { x, y: y - 5 });
   }
 
-  if (event.keyCode === 68) {
+  if (event.keyCode === 39) {
+    //right
     Body.setVelocity(ball, { x: x + 5, y });
   }
 
-  if (event.keyCode === 83) {
+  if (event.keyCode === 40) {
+    //down
     Body.setVelocity(ball, { x, y: y + 5 });
   }
 
-  if (event.keyCode === 65) {
+  if (event.keyCode === 37) {
+    //left
     Body.setVelocity(ball, { x: x - 5, y });
   }
 });
@@ -230,4 +234,13 @@ Events.on(engine, "collisionStart", (event) => {
       });
     }
   });
+});
+
+//Hide intro message
+
+const introMessage = document.querySelector(".intro");
+const button = document.querySelector("button");
+
+button.addEventListener("click", () => {
+  introMessage.classList.add("hidden");
 });

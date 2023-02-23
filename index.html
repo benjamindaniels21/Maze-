@@ -15,7 +15,7 @@
 
         h1 {
             color: white;
-            font-size: 36px;
+            font-size: 64px;
         }
 
         .winner{
@@ -27,13 +27,38 @@
             height: 100vh;
             width: 100vw;
         }
+        .intro{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .intro h1{
+            background-color: coral;
+            color: yellow;
+            border-radius: 5px;
+        }
+        .intro button{
+            margin-top: 300px;
+            background-color: coral;
+            font-size: 2em;
+            border-radius: 5px;
+        }
     </style>
     <title>Maze!</title>
 </head>
 <body>
-    <div class="winner hidden">
-        <h1>You Win!!</h1>
+    <div class="wrapper">
+        <div class=" intro">
+            <h1>Use your arrow keys to<br> move the ball to the goal!</h1>
+            <button class="intro">Ok, let's start!</button>
+        </div>
+        <div class="winner hidden">
+            <h1>You Win!!</h1>
+        </div>
+        <script src="index.js"></script>
     </div>
-    <script src="index.js"></script>
 </body>
 </html>
